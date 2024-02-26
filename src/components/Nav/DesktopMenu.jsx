@@ -8,35 +8,79 @@ const DesktopMenu = ({ dark, setDark }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   return (
-    <ul className="flex items-center gap-5">
+    <ul className="items-center gap-5 hidden sm:flex select-none">
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "bg-base-content text-base-100 px-2 py-1" : "px-2 py-1"
+          }>
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/inventory">Inventory</NavLink>
+        <NavLink
+          to="/inventory"
+          className={({ isActive }) =>
+            isActive ? "bg-base-content text-base-100 px-2 py-1" : "px-2 py-1"
+          }>
+          Inventory
+        </NavLink>
       </li>
       {user && !user.isAgency && (
         <li>
-          <NavLink to="/history">History</NavLink>
+          <NavLink
+            to="/history"
+            className={({ isActive }) =>
+              isActive ? "bg-base-content text-base-100 px-2 py-1" : "px-2 py-1"
+            }>
+            History
+          </NavLink>
         </li>
       )}
       {user && user.isAgency && (
         <li>
-          <NavLink to="/add-car">Add car</NavLink>
+          <NavLink
+            to="/add-car"
+            className={({ isActive }) =>
+              isActive ? "bg-base-content text-base-100 px-2 py-1" : "px-2 py-1"
+            }>
+            Add car
+          </NavLink>
         </li>
       )}
       {user && user.isAgency && (
         <li>
-          <NavLink to="/orders">Orders</NavLink>
+          <NavLink
+            to="/orders"
+            className={({ isActive }) =>
+              isActive ? "bg-base-content text-base-100 px-2 py-1" : "px-2 py-1"
+            }>
+            Orders
+          </NavLink>
         </li>
       )}
       {user && user.isAgency && (
         <li>
-          <NavLink to="/all-cars">All Cars</NavLink>
+          <NavLink
+            to="/all-cars"
+            className={({ isActive }) =>
+              isActive ? "bg-base-content text-base-100 px-2 py-1" : "px-2 py-1"
+            }>
+            All Cars
+          </NavLink>
         </li>
       )}
       <li>
-        {!user && <NavLink to="/login">Login</NavLink>}
+        {!user && (
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              isActive ? "bg-base-content text-base-100 px-2 py-1" : "px-2 py-1"
+            }>
+            Login
+          </NavLink>
+        )}
         {user && (
           <button
             onClick={() => {

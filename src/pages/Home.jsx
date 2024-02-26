@@ -107,7 +107,7 @@ const Home = () => {
         </div>
         <div className="flex-1 place-content-center relative z-10 overflow-hidden sm:grid hidden">
           <img src={carImage} alt="" className="z-[11]" />
-          <div className="bg-gradient-to-b from-pink-500 via-red-500 to-yellow-500 absolute w-[350px] h-full -z-1 left-1/2 -translate-x-1/2" />
+          {/* <div className="bg-gradient-to-b from-pink-500 via-red-500 to-yellow-500 absolute w-[350px] h-full -z-1 left-1/2 -translate-x-1/2 hidden md:block" /> */}
         </div>
       </div>
     </PageTransition>

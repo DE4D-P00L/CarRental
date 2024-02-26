@@ -31,7 +31,7 @@ const PageTransition = ({ children, className }) => {
     exit: {
       top: "0",
       transition: {
-        duration: 1,
+        duration: 0.75,
         ease: [0.76, 0, 0.24, 1],
       },
     },
@@ -53,7 +53,7 @@ const PageTransition = ({ children, className }) => {
       scale: 0.9,
       opacity: 0.2,
       transition: {
-        duration: 1.2,
+        duration: 0.8,
         ease: [0.76, 0, 0.24, 1],
       },
     },
