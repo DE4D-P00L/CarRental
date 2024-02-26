@@ -48,7 +48,7 @@ const EditCar = () => {
     formData.append("carImage", selectedImage);
     try {
       const response = await axios.post(
-        import.meta.env.VITE_BACKEND_URL + "/agency/edit-car",
+        import.meta.env.VITE_BACKEND_URL + "/agency/edit-car/"+id,
         formData,
         { headers: { Authorization: localStorage.getItem("token") } }
       );
