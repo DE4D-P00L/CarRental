@@ -18,7 +18,8 @@ const MobileMenu = ({ dark, setDark, menuOpen, setMenuOpen }) => {
           to="/"
           className={({ isActive }) =>
             isActive ? "bg-base-content text-base-100 px-2 py-1" : "px-2 py-1"
-          }>
+          }
+          onClick={() => setMenuOpen(false)}>
           Home
         </NavLink>
       </li>
@@ -27,7 +28,8 @@ const MobileMenu = ({ dark, setDark, menuOpen, setMenuOpen }) => {
           to="/inventory"
           className={({ isActive }) =>
             isActive ? "bg-base-content text-base-100 px-2 py-1" : "px-2 py-1"
-          }>
+          }
+          onClick={() => setMenuOpen(false)}>
           Inventory
         </NavLink>
       </li>
@@ -37,7 +39,8 @@ const MobileMenu = ({ dark, setDark, menuOpen, setMenuOpen }) => {
             to="/history"
             className={({ isActive }) =>
               isActive ? "bg-base-content text-base-100 px-2 py-1" : "px-2 py-1"
-            }>
+            }
+            onClick={() => setMenuOpen(false)}>
             History
           </NavLink>
         </li>
@@ -48,7 +51,8 @@ const MobileMenu = ({ dark, setDark, menuOpen, setMenuOpen }) => {
             to="/add-car"
             className={({ isActive }) =>
               isActive ? "bg-base-content text-base-100 px-2 py-1" : "px-2 py-1"
-            }>
+            }
+            onClick={() => setMenuOpen(false)}>
             Add car
           </NavLink>
         </li>
@@ -59,7 +63,8 @@ const MobileMenu = ({ dark, setDark, menuOpen, setMenuOpen }) => {
             to="/orders"
             className={({ isActive }) =>
               isActive ? "bg-base-content text-base-100 px-2 py-1" : "px-2 py-1"
-            }>
+            }
+            onClick={() => setMenuOpen(false)}>
             Orders
           </NavLink>
         </li>
@@ -70,7 +75,8 @@ const MobileMenu = ({ dark, setDark, menuOpen, setMenuOpen }) => {
             to="/all-cars"
             className={({ isActive }) =>
               isActive ? "bg-base-content text-base-100 px-2 py-1" : "px-2 py-1"
-            }>
+            }
+            onClick={() => setMenuOpen(false)}>
             All Cars
           </NavLink>
         </li>
@@ -81,7 +87,8 @@ const MobileMenu = ({ dark, setDark, menuOpen, setMenuOpen }) => {
             to="/login"
             className={({ isActive }) =>
               isActive ? "bg-base-content text-base-100 px-2 py-1" : "px-2 py-1"
-            }>
+            }
+            onClick={() => setMenuOpen(false)}>
             Login
           </NavLink>
         )}
@@ -90,6 +97,7 @@ const MobileMenu = ({ dark, setDark, menuOpen, setMenuOpen }) => {
             onClick={() => {
               dispatch(clearUser());
               navigate("/login", { replace: true });
+              setMenuOpen(false);
             }}>
             Logout
           </button>
