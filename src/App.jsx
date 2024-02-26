@@ -11,6 +11,7 @@ import Inventory from "./pages/Inventory";
 import AllCars from "./pages/AllCars";
 import AddCar from "./pages/AddCar";
 import Orders from "./pages/Orders";
+import EditCar from "./pages/EditCar";
 
 function App() {
   const [dark, setDark] = useState(localStorage.getItem("theme") === "true");
@@ -33,6 +34,7 @@ function App() {
           <Route path="/add-car" element={<AddCar />} />
           <Route path="/all-cars" element={<AllCars />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/edit/:id" element={<EditCar />} />
         </Routes>
       </AnimatePresence>
     </div>

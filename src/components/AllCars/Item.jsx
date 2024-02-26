@@ -1,4 +1,5 @@
 import { FaUser } from "react-icons/fa";
+import EditButton from "./EditButton";
 
 const Item = ({ car }) => {
   const {
@@ -12,7 +13,7 @@ const Item = ({ car }) => {
     vehicleImage,
   } = car;
   return (
-    <div className="shadow-md rounded-md bg-base-200">
+    <div className="shadow-md rounded-md bg-base-200 relative">
       <div className="max-h-[250px] p-2 h-[200px]">
         <img
           src={`${
@@ -24,6 +25,7 @@ const Item = ({ car }) => {
           className="h-full rounded-md w-[250px] object-contain"
         />
       </div>
+      <EditButton id={_id} />
       <div className="flex p-2">
         <div className="flex-1">
           <h3 className="font-semibold text-xl">{model}</h3>
