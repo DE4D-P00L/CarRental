@@ -100,11 +100,15 @@ const Signup = () => {
             {...register("phone", {
               required: "Phone Number Required",
               minLength: {
-                value: 3,
-                message: "Phone Number must be at least 3 characters",
+                value: 10,
+                message: "Phone Number must be at least 10 characters",
+              },
+              maxLength: {
+                value: 10,
+                message: "Phone Number must be at most 10 characters",
               },
             })}
-            placeholder="+919876543210"
+            placeholder="9876543210"
           />
           {errors.phone?.message && (
             <p className="text-red-500">{errors.phone?.message}</p>
