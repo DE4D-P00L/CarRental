@@ -95,7 +95,7 @@ const Login = () => {
         </div>
         <button
           type="submit"
-          className="w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-[#2563eb] mt-4">
+          className="w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-[#2563eb]">
           Login
         </button>
         <span>

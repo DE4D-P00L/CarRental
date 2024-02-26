@@ -40,7 +40,7 @@ const Signup = () => {
     <div className="w-full flex items-center justify-center p-2">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col p-6 sm:p-8 bg-base-200 gap-y-3 rounded-lg w-full max-w-sm">
+        className="flex flex-col p-6 sm:p-8 bg-base-200 gap-y-3 rounded-lg w-full max-w-[400px]">
         <h3 className="text-xl font-bold leading-tight tracking-tight md:text-2xl">
           Sign up for a new account
         </h3>
@@ -62,36 +62,38 @@ const Signup = () => {
             <p className="text-red-500">{errors.email?.message}</p>
           )}
         </div>
-        <div className="space-y-2">
-          <label>First Name</label>
-          <input
-            type="text"
-            className="bg-base-200 border border-gray-500 text-content sm:text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
-            {...register("firstName", {
-              required: "First Name Required",
-              minLength: {
-                value: 3,
-                message: "First Name must be at least 3 characters",
-              },
-            })}
-            placeholder="John"
-          />
-          {errors.firstName?.message && (
-            <p className="text-red-500">{errors.firstName?.message}</p>
-          )}
+        <div className="flex gap-3">
+          <div className="space-y-2">
+            <label>First Name</label>
+            <input
+              type="text"
+              className="bg-base-200 border border-gray-500 text-content sm:text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+              {...register("firstName", {
+                required: "First Name Required",
+                minLength: {
+                  value: 3,
+                  message: "First Name must be at least 3 characters",
+                },
+              })}
+              placeholder="John"
+            />
+          </div>
+          <div className="space-y-2">
+            <label>Last Name</label>
+            <input
+              type="text"
+              className="bg-base-200 border border-gray-500 text-content sm:text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
+              {...register("lastName")}
+              placeholder="Doe"
+            />
+          </div>
         </div>
-        <div className="space-y-2">
-          <label>Last Name</label>
-          <input
-            type="text"
-            className="bg-base-200 border border-gray-500 text-content sm:text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
-            {...register("lastName")}
-            placeholder="Doe"
-          />
-          {errors.lastName?.message && (
-            <p className="text-red-500">{errors.lastName?.message}</p>
-          )}
-        </div>
+        {errors.firstName?.message && (
+          <p className="text-red-500">{errors.firstName?.message}</p>
+        )}
+        {errors.lastName?.message && (
+          <p className="text-red-500">{errors.lastName?.message}</p>
+        )}
         <div className="space-y-2">
           <label>Phone number</label>
           <input
@@ -165,7 +167,7 @@ const Signup = () => {
         </div>
         <button
           type="submit"
-          className="w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-[#2563eb] mt-4">
+          className="w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-[#2563eb] ">
           Sign up
         </button>
         <span>
