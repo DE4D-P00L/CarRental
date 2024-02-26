@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import OrderItem from "../components/History/OrderItem";
+import OrderItemMobile from "../components/History/OrderItemMobile";
 import { useNavigate } from "react-router-dom";
 import useGetOrderHistory from "../hooks/useGetOrderHistory";
 import { useEffect } from "react";
@@ -15,12 +16,17 @@ const RentedHistory = () => {
   }, [navigate, user]);
 
   return (
-    <PageTransition className="max-w-7xl mx-auto">
+    <PageTransition className="max-w-7xl mx-auto px-3">
       <div className="flex flex-col min-h-[calc(100vh-60px)]">
         <h2 className="text-3xl font-bold my-10">Rental History</h2>
-        <div className="flex-1 flex flex-col gap-4">
+        <div className="flex-1 flex-col gap-4 sm:flex hidden">
           {orders.map((order) => (
             <OrderItem key={order._id} order={order} />
+          ))}
+        </div>
+        <div className="flex-1 flex-col gap-4 sm:hidden flex">
+          {orders.map((order) => (
+            <OrderItemMobile key={order._id} order={order} />
           ))}
         </div>
       </div>

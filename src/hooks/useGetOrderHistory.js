@@ -15,7 +15,7 @@ const useGetOrderHistory = () => {
       setOrders(response?.data?.rentals);
     } catch (error) {
       // TODO: add toast notification
-      console.log(error.message);
+      // console.log(error.message);
     } finally {
       setLoading(false);
     }
