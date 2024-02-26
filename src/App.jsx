@@ -1,28 +1,30 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NavBar from "./components/Nav/NavBar";
+import { Toaster } from "react-hot-toast";
+import { AnimatePresence } from "framer-motion";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import RentedHistory from "./pages/RentedHistory";
 import Signup from "./pages/Signup";
-import NavBar from "./components/Nav/NavBar";
+import RentedHistory from "./pages/RentedHistory";
 import Inventory from "./pages/Inventory";
-import AddCar from "./pages/AddCar";
 import AllCars from "./pages/AllCars";
+import AddCar from "./pages/AddCar";
 import Orders from "./pages/Orders";
-import { Toaster } from "react-hot-toast";
 
 function App() {
   const [dark, setDark] = useState(localStorage.getItem("theme") === "true");
   useEffect(() => {
     setDark(localStorage.getItem("theme") === "true");
   }, []);
+  const location = useLocation();
 
   return (
     <div className="min-h-screen" data-theme={dark ? "dark" : "light"}>
-      <BrowserRouter>
-        <NavBar dark={dark} setDark={setDark} />
-        <Toaster />
-        <Routes>
+      <NavBar dark={dark} setDark={setDark} />
+      <Toaster />
+      <AnimatePresence mode={"wait"}>
+        <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Signup />} />
@@ -32,7 +34,7 @@ function App() {
           <Route path="/all-cars" element={<AllCars />} />
           <Route path="/orders" element={<Orders />} />
         </Routes>
-      </BrowserRouter>
+      </AnimatePresence>
     </div>
   );
 }

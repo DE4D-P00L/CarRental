@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import PageTransition from "../Animations/PageTransition";
 
 const AddCar = () => {
   const user = useSelector((state) => state.auth.user);
@@ -54,7 +55,7 @@ const AddCar = () => {
     setSelectedImage(null);
   };
   return (
-    <div className="grid place-content-center min-h-[calc(100vh-60px)]">
+    <PageTransition className="grid place-content-center min-h-[calc(100vh-60px)]">
       <div className="flex flex-col gap-3 w-[350px] bg-base-300 p-3 rounded-md">
         <h3 className="font-semibold text-2xl my-3 text-center">Add a Car</h3>
         <input
@@ -114,7 +115,7 @@ const AddCar = () => {
           Add
         </button>
       </div>
-    </div>
+    </PageTransition>
   );
 };
 export default AddCar;

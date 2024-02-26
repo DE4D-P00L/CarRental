@@ -7,6 +7,7 @@ import DatePicker from "../components/Inventory/DatePicker";
 import convertDate from "../utils/convertDate.js";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
+import PageTransition from "../Animations/PageTransition";
 
 const Inventory = () => {
   const [days, setDays] = useState(1);
@@ -55,7 +56,7 @@ const Inventory = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-2">
+    <PageTransition className="max-w-7xl mx-auto px-2">
       <h3 className="text-3xl font-semibold my-5">Rent a Car</h3>
       <div className="flex gap-5 items-center sm:flex-row flex-col my-5">
         <DatePicker
@@ -74,7 +75,7 @@ const Inventory = () => {
             <Item key={car._id} car={car} onRentCar={onRentCar} />
           ))}
       </div>
-    </div>
+    </PageTransition>
   );
 };
 export default Inventory;

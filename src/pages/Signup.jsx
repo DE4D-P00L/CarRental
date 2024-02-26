@@ -1,14 +1,16 @@
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { setUser } from "../features/authSlice";
 import toast from "react-hot-toast";
+import PageTransition from "../Animations/PageTransition";
 
 const Signup = () => {
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -26,6 +28,7 @@ const Signup = () => {
       ? import.meta.env.VITE_BACKEND_URL + "/agency/signup"
       : import.meta.env.VITE_BACKEND_URL + "/user/signup";
     try {
+      setLoading(true);
       const response = await axios.post(reqUrl, data);
       toast.success("Welcome");
       localStorage.setItem("token", `Bearer ${response.data.token}`);
@@ -33,11 +36,13 @@ const Signup = () => {
       navigate("/");
     } catch (error) {
       toast.error(error.response.data.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="w-full flex items-center justify-center p-2">
+    <PageTransition className="w-full flex items-center justify-center p-2">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col p-6 sm:p-8 bg-base-200 gap-y-3 rounded-lg w-full max-w-[400px]">
@@ -168,7 +173,8 @@ const Signup = () => {
         <button
           type="submit"
           className="w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-[#2563eb] ">
-          Sign up
+          {loading && <span className="loading loading-dots loading-sm"></span>}
+          {!loading && <span>Login</span>}
         </button>
         <span>
           Already have an account?{" "}
@@ -178,7 +184,7 @@ const Signup = () => {
           </Link>
         </span>
       </form>
-    </div>
+    </PageTransition>
   );
 };
 export default Signup;
