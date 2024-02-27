@@ -178,7 +178,7 @@ const Signup = () => {
           type="submit"
           className="w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-[#2563eb] ">
           {loading && <span className="loading loading-dots loading-sm"></span>}
-          {!loading && <span>Login</span>}
+          {!loading && <span>Signup</span>}
         </button>
         <span>
           Already have an account?{" "}
