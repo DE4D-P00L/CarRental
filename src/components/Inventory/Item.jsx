@@ -13,17 +13,33 @@ const Item = ({ car, onRentCar }) => {
     vehicleImage,
   } = car;
   return (
-    <div className="shadow-md rounded-md bg-base-200">
-      <div className="max-h-[250px] p-2 h-[200px]">
+    <div className="shadow-md rounded-md bg-base-200 p-2">
+      <div className="max-h-[250px] h-[180px] flex items-center justify-center relative group cursor-pointer">
         <img
           src={`${
             vehicleImage === "" || !vehicleImage ? carPlaceholder : vehicleImage
           }`}
           alt={model}
-          className="h-full rounded-md w-[250px] object-contain"
+          className="rounded-md w-[250px] object-contain h-full"
         />
+        <div className="absolute top-0 left-0 w-full h-full bg-base-100/70 rounded-md justify-center items-center group-hover:flex hidden">
+          <div className="max-w-[250px] flex flex-col items-center gap-2">
+            {features?.map((feature, idx) => (
+              <span
+                key={idx}
+                className="border border-base-content rounded-full px-2">
+                {feature}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
-      <div className="flex p-2">
+      {/* <marquee
+        className="px-2 group-hover:inline-block hidden"
+        scrollamount="3">
+        <p className="max-w-[250px]">{features}</p>
+      </marquee> */}
+      <div className="flex mt-2">
         <div className="flex-1">
           <h3 className="font-semibold text-xl">{model}</h3>
           <p className="font-thin text-sm">{vehicleNumber}</p>

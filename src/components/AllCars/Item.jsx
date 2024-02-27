@@ -3,25 +3,17 @@ import EditButton from "./EditButton";
 import carPlaceholder from "../../assets/car-placeholder.png";
 
 const Item = ({ car }) => {
-  const {
-    _id,
-    agencyId,
-    capacity,
-    features,
-    model,
-    rent,
-    vehicleNumber,
-    vehicleImage,
-  } = car;
+  const { _id, capacity, features, model, rent, vehicleNumber, vehicleImage } =
+    car;
   return (
     <div className="shadow-md rounded-md bg-base-200 relative">
-      <div className="max-h-[250px] p-2 h-[200px]">
+      <div className="max-h-[250px] h-[200px] p-2 flex items-center justify-center">
         <img
           src={`${
             vehicleImage === "" || !vehicleImage ? carPlaceholder : vehicleImage
           }`}
           alt={model}
-          className="h-full rounded-md w-[250px] object-contain"
+          className="rounded-md w-[250px] object-contain"
         />
       </div>
       <EditButton id={_id} />
