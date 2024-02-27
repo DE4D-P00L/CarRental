@@ -34,7 +34,6 @@ const OrderItemMobile = ({ order }) => {
           <h3 className="">Model: {model}</h3>
           <div className="flex items-center gap-2">Capacity: {capacity}</div>
           <p className="text-sm">Vehicle Number: {vehicleNumber}</p>
-          <h3 className="font-semibold">Total Rent: ₹ {price}</h3>
         </div>
       </div>
       <div className="flex flex-col justify-center">
