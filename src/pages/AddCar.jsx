@@ -27,6 +27,13 @@ const AddCar = () => {
   const addCarHandler = async (e) => {
     e.preventDefault();
     const formData = new FormData();
+    if (
+      model.trim().length === 0 ||
+      vehNumber.trim().length === 0 ||
+      capacity <= 0 ||
+      rent <= 0
+    )
+      return toast.error("Please fill valid info");
     formData.append("model", model);
     formData.append("vehicleNumber", vehNumber);
     formData.append("capacity", capacity);

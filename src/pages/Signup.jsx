@@ -52,13 +52,17 @@ const Signup = () => {
         <div className="mt-4 space-y-2">
           <label>Your Email</label>
           <input
-            type="text"
+            type="email"
             className="bg-base-200 border border-gray-500 text-content sm:text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5"
             {...register("email", {
               required: "Email Required",
               minLength: {
                 value: 3,
                 message: "Email must be at least 3 characters",
+              },
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: "Invalid email address",
               },
             })}
             placeholder="johndoe@gmail.com"

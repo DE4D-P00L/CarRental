@@ -59,6 +59,10 @@ const Login = () => {
                 value: 3,
                 message: "Email must be at least 3 characters",
               },
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: "Invalid email address",
+              },
             })}
             placeholder="johnDoe@gmail.com"
           />

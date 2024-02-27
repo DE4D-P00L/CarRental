@@ -43,7 +43,7 @@ const EditCar = () => {
     if (vehNumber.trim().length > 0)
       formData.append("vehicleNumber", vehNumber);
     if (capacity > 0) formData.append("capacity", capacity);
-    if (features.trim().length > 0) formData.append("features", features);
+    formData.append("features", features);
     if (rent > 0) formData.append("rent", rent);
     if (selectedImage != null) formData.append("carImage", selectedImage);
     try {

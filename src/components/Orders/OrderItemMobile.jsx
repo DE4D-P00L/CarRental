@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { FaUser } from "react-icons/fa";
 import { MdExpandMore, MdExpandLess } from "react-icons/md";
 import carPlaceholder from "../../assets/car-placeholder.png";
+import convertDateIST from "../../utils/convertDateToIST.js";
 
 const OrderItemMobile = ({ order }) => {
   const { price, carId, customerId, startDate, endDate } = order;
@@ -10,16 +10,17 @@ const OrderItemMobile = ({ order }) => {
 
   const [showCustomerDetails, setShowCustomerDetails] = useState(false);
   const [showCarDetails, setShowCarDetails] = useState(false);
+  const [showRentDetails, setShowRentDetails] = useState(false);
 
   return (
     <div className="shadow-md rounded-md bg-base-200 flex gap-3 p-4 flex-col">
-      <div className="max-h-[250px] p-2 h-[200px] flex justify-center">
+      <div className="max-h-[250px] p-2 flex justify-center">
         <img
           src={`${
             vehicleImage === "" || !vehicleImage ? carPlaceholder : vehicleImage
           }`}
           alt={model}
-          className="h-full rounded-md w-[250px] object-contain"
+          className="rounded-md w-[250px] object-contain"
         />
       </div>
       <div className="flex flex-col justify-center">
@@ -53,6 +54,21 @@ const OrderItemMobile = ({ order }) => {
           <h3 className="">Model: {model}</h3>
           <div className="flex items-center gap-2">Capacity: {capacity}</div>
           <p className="text-sm">Vehicle Number: {vehicleNumber}</p>
+        </div>
+      </div>
+      <div className="flex flex-col justify-center">
+        <button
+          className="flex justify-between text-left items-center"
+          onClick={() => setShowRentDetails((prev) => !prev)}>
+          <h2 className="text-xl mb-3">Rent Details</h2>
+          <span>
+            {!showRentDetails && <MdExpandMore />}
+            {showRentDetails && <MdExpandLess />}
+          </span>
+        </button>
+        <div className={`${showRentDetails ? "block" : "hidden"}`}>
+          <h3>Start Date: {convertDateIST(startDate)}</h3>
+          <h3>End Date: {convertDateIST(endDate)}</h3>
           <h3 className="font-semibold">Total Rent: ₹ {price}</h3>
         </div>
       </div>
