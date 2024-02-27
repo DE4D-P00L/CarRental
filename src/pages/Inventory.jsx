@@ -49,6 +49,7 @@ const Inventory = () => {
       toast.success(
         "Rented successfully, Total Price: " + response.data.rental.price
       );
+      getFilteredCars(convertDate(startDate), convertDate(endDate));
     } catch (error) {
       toast.error("Please login first");
       console.log(error.message);
