@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import carPlaceholder from "../../assets/car-placeholder.png";
+
 const OrderItem = ({ order }) => {
   const { price, carId, customerId, startDate, endDate } = order;
   const { model, vehicleNumber, capacity, vehicleImage } = carId;
@@ -8,9 +10,7 @@ const OrderItem = ({ order }) => {
       <div className="max-h-[250px] p-2 h-[200px]">
         <img
           src={`${
-            vehicleImage === "" || !vehicleImage
-              ? "https://placehold.co/600x400/png"
-              : vehicleImage
+            vehicleImage === "" || !vehicleImage ? carPlaceholder : vehicleImage
           }`}
           alt={model}
           className="h-full rounded-md w-[250px] object-contain"

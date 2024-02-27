@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { MdExpandMore, MdExpandLess } from "react-icons/md";
+import carPlaceholder from "../../assets/car-placeholder.png";
 
 const OrderItemMobile = ({ order }) => {
   const { price, carId, customerId, startDate, endDate } = order;
@@ -15,9 +16,7 @@ const OrderItemMobile = ({ order }) => {
       <div className="max-h-[250px] p-2 h-[200px] flex justify-center">
         <img
           src={`${
-            vehicleImage === "" || !vehicleImage
-              ? "https://placehold.co/600x400/png"
-              : vehicleImage
+            vehicleImage === "" || !vehicleImage ? carPlaceholder : vehicleImage
           }`}
           alt={model}
           className="h-full rounded-md w-[250px] object-contain"

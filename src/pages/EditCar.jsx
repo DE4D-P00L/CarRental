@@ -45,15 +45,16 @@ const EditCar = () => {
     if (capacity > 0) formData.append("capacity", capacity);
     if (features.trim().length > 0) formData.append("features", features);
     if (rent > 0) formData.append("rent", rent);
-    formData.append("carImage", selectedImage);
+    if (selectedImage != null) formData.append("carImage", selectedImage);
     try {
       const response = await axios.post(
-        import.meta.env.VITE_BACKEND_URL + "/agency/edit-car/"+id,
+        import.meta.env.VITE_BACKEND_URL + "/agency/edit-car/" + id,
         formData,
         { headers: { Authorization: localStorage.getItem("token") } }
       );
       if (response.data.success === true) {
         toast.success("Car edited successfully");
+        navigate("/all-cars", { replace: true });
       } else {
         toast.error("Please try again");
       }
