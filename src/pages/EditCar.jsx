@@ -17,6 +17,7 @@ const EditCar = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const { loading, getCar, car } = useGetCarDetails();
   const { id } = useParams();
+  const [isFirstRender, setIsFirstRender] = useState(true);
 
   useEffect(() => {
     if (!user || !user?.isAgency) navigate("/", { replace: true });
@@ -27,9 +28,10 @@ const EditCar = () => {
       setCapacity(car.capacity);
       setRent(car.rent);
       setFeatures(car.features?.join(","));
+      setIsFirstRender(false);
     };
     preFillData();
-  }, [navigate, user, id, model]);
+  }, [navigate, user, id, isFirstRender]);
 
   const handleImageSelect = (e) => {
     const file = e.target.files[0];

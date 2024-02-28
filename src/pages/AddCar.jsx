@@ -60,6 +60,7 @@ const AddCar = () => {
     setRent("");
     setFeatures("");
     setSelectedImage(null);
+    navigate("/all-cars");
   };
   return (
     <PageTransition className="grid place-content-center min-h-[calc(100vh-60px)]">

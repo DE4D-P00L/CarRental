@@ -7,7 +7,7 @@ const OrderItem = ({ order }) => {
   const { model, vehicleNumber, capacity, vehicleImage } = carId;
   const { firstName, lastName, email, phone, address } = customerId;
   return (
-    <div className="shadow-md rounded-md bg-base-200 flex gap-10 p-4">
+    <div className="shadow-md rounded-md bg-base-200 flex gap-10 p-4 px-10">
       <div className="max-h-[250px] p-2 flex justify-center items-center">
         <img
           src={`${
@@ -16,15 +16,6 @@ const OrderItem = ({ order }) => {
           alt={model}
           className=" rounded-md w-[250px] object-contain"
         />
-      </div>
-      <div className="flex flex-col my-8">
-        <h2 className="text-xl font-semibold mb-3">Customer Details</h2>
-        <div className="">
-          <h3 className="">Name: {`${firstName} ${lastName}`}</h3>
-          <div className="flex items-center gap-2">Email: {email}</div>
-          <p className="text-sm">Phone Number: {phone}</p>
-          <h3 className=" max-w-[30ch]">Address: {address}</h3>
-        </div>
       </div>
       <div className="flex flex-col my-8">
         <h2 className="text-xl font-semibold mb-3">Car Details</h2>
@@ -42,7 +33,6 @@ const OrderItem = ({ order }) => {
           <h3 className="font-semibold">Total Rent: ₹ {price}</h3>
         </div>
       </div>
-      <div className="flex-1" />
     </div>
   );
 };

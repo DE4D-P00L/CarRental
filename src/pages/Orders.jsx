@@ -33,6 +33,11 @@ const Orders = () => {
             ))}
           </div>
         )}
+        {!loading && orders.length === 0 && (
+          <h2 className="flex items-center justify-center text-center">
+            No ordered vehicles
+          </h2>
+        )}
         {loading && (
           <h2 className="flex items-center justify-center text-center">
             <span className="loading loading-ring loading-md"></span>Loading

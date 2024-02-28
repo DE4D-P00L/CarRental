@@ -1,5 +1,6 @@
 import { FaUser } from "react-icons/fa";
 import carPlaceholder from "../../assets/car-placeholder.png";
+import { useSelector } from "react-redux";
 
 const Item = ({ car, onRentCar }) => {
   const {
@@ -12,6 +13,9 @@ const Item = ({ car, onRentCar }) => {
     vehicleNumber,
     vehicleImage,
   } = car;
+
+  const user = useSelector((state) => state.auth.user);
+
   return (
     <div className="shadow-md rounded-md bg-base-200 p-2">
       <div className="max-h-[250px] h-[180px] flex items-center justify-center relative group cursor-pointer">
@@ -50,11 +54,13 @@ const Item = ({ car, onRentCar }) => {
             <FaUser />
             {capacity}
           </div>
-          <button
-            className="bg-success text-white px-2.5 py-1.5 rounded-md"
-            onClick={() => onRentCar(car)}>
-            Rent
-          </button>
+          {!user.isAgency && (
+            <button
+              className="bg-success text-white px-2.5 py-1.5 rounded-md"
+              onClick={() => onRentCar(car)}>
+              Rent
+            </button>
+          )}
         </div>
       </div>
     </div>

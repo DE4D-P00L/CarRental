@@ -20,7 +20,7 @@ const RentedHistory = () => {
       <div className="flex flex-col min-h-[calc(100vh-60px)]">
         <h2 className="text-3xl font-bold my-10">Rental History</h2>
         {!loading && orders.length > 0 && (
-          <div className="flex-1 flex-col gap-4 sm:flex hidden">
+          <div className="flex-1 flex-col gap-4 sm:flex hidden items-center">
             {orders.map((order) => (
               <OrderItem key={order._id} order={order} />
             ))}

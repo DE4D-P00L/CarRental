@@ -23,12 +23,15 @@ const Login = () => {
   }, [navigate, user]);
 
   const onSubmit = async (data) => {
-    const reqUrl = data.isAgency
-      ? import.meta.env.VITE_BACKEND_URL + "/agency/login"
-      : import.meta.env.VITE_BACKEND_URL + "/user/login";
+    // const reqUrl = data.isAgency
+    //   ? import.meta.env.VITE_BACKEND_URL + "/agency/login"
+    //   : import.meta.env.VITE_BACKEND_URL + "/user/login";
     try {
       setLoading(true);
-      const response = await axios.post(reqUrl, data);
+      const response = await axios.post(
+        import.meta.env.VITE_BACKEND_URL + "/user/login",
+        data
+      );
       toast.success("Welcome");
       localStorage.setItem("token", `Bearer ${response.data.token}`);
       dispatch(setUser(response.data.user));
@@ -88,7 +91,7 @@ const Login = () => {
             <p className="text-red-500">{errors.password.message}</p>
           )}
         </div>
-        <div className="space-y-2">
+        {/* <div className="space-y-2">
           <div className="flex gap-2">
             <input
               type="checkbox"
@@ -100,7 +103,7 @@ const Login = () => {
           {errors.isAgency?.message && (
             <p className="text-red-500">{errors.isAgency?.message}</p>
           )}
-        </div>
+        </div> */}
         <button
           type="submit"
           className="w-full text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-[#2563eb]">
