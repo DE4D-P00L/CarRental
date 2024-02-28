@@ -54,7 +54,7 @@ const Item = ({ car, onRentCar }) => {
             <FaUser />
             {capacity}
           </div>
-          {!user.isAgency && (
+          {!user?.isAgency && (
             <button
               className="bg-success text-white px-2.5 py-1.5 rounded-md"
               onClick={() => onRentCar(car)}>
