@@ -3,7 +3,7 @@ import carImage from "../assets/car.png";
 
 const Home = () => {
   return (
-    <PageTransition className="max-w-7xl mx-auto max-h-[calc(100vh-60px)] h-screen flex justify-center items-center">
+    <PageTransition className="max-w-7xl mx-auto max-h-[calc(100dvh-60px)] h-screen flex justify-center items-center">
       <div className="flex px-7 sm:flex-row flex-col">
         <div className="flex-1 flex justify-center items-center">
           <div>
