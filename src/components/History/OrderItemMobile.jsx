@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
 import carPlaceholder from "../../assets/car-placeholder.png";
 import convertDateIST from "../../utils/convertDateToIST.js";
 
 const OrderItemMobile = ({ order }) => {
-  const { price, carId, customerId, startDate, endDate } = order;
+  const { price, carId, startDate, endDate } = order;
   const { model, vehicleNumber, capacity, vehicleImage } = carId;
   const [showCarDetails, setShowCarDetails] = useState(false);
   const [showRentDetails, setShowRentDetails] = useState(false);

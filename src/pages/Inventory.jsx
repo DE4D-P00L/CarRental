@@ -5,7 +5,6 @@ import Item from "../components/Inventory/Item";
 import Select from "../components/Inventory/Select";
 import DatePicker from "../components/Inventory/DatePicker";
 import convertDate from "../utils/convertDate.js";
-import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import PageTransition from "../Animations/PageTransition";
 
@@ -14,7 +13,6 @@ const Inventory = () => {
   const nowDate = convertDate(new Date());
   const [startDate, setStartDate] = useState(nowDate);
   const { loading, getFilteredCars, cars } = useGetAllCars();
-  const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
     const endDate = new Date(startDate);
@@ -75,6 +73,11 @@ const Inventory = () => {
           cars?.map((car) => (
             <Item key={car._id} car={car} onRentCar={onRentCar} />
           ))}
+        {loading && (
+          <h2 className="flex items-center">
+            <span className="loading loading-ring loading-md"></span>Loading
+          </h2>
+        )}
       </div>
     </PageTransition>
   );
