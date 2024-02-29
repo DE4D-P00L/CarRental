@@ -19,9 +19,7 @@ const AllCars = () => {
     <PageTransition className="max-w-7xl mx-auto p-3">
       <div className="flex gap-3 flex-wrap justify-center">
         <h2 className="text-3xl font-bold my-10 w-full">All Cars</h2> <br />
-        {!loading && cars.length === 0 && (
-          <h2>No cars available on this day</h2>
-        )}
+        {!loading && cars.length === 0 && <h2>No cars added</h2>}
         {!loading && cars?.map((car) => <Item key={car._id} car={car} />)}
         {loading && (
           <h2 className="flex items-center justify-center text-center">

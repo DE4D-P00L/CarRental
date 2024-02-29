@@ -9,6 +9,7 @@ const AddCar = () => {
   const user = useSelector((state) => state.auth.user);
   const navigate = useNavigate();
   const [model, setModel] = useState("");
+  const [loading, setLoading] = useState(false);
   const [vehNumber, setVehNumber] = useState("");
   const [capacity, setCapacity] = useState("");
   const [rent, setRent] = useState("");
@@ -41,6 +42,7 @@ const AddCar = () => {
     formData.append("rent", rent);
     formData.append("carImage", selectedImage);
     try {
+      setLoading(true);
       const response = await axios.post(
         import.meta.env.VITE_BACKEND_URL + "/agency/add-car",
         formData,
@@ -53,6 +55,8 @@ const AddCar = () => {
       }
     } catch (error) {
       console.log(error.message);
+    } finally {
+      setLoading(false);
     }
     setModel("");
     setVehNumber("");
@@ -120,7 +124,8 @@ const AddCar = () => {
         <button
           onClick={addCarHandler}
           className="bg-success text-black py-2 rounded-md">
-          Add
+          {loading && <span className="loading loading-dots loading-sm"></span>}
+          {!loading && <span>Add</span>}
         </button>
       </div>
     </PageTransition>

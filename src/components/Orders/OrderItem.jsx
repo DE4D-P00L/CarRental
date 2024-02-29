@@ -2,7 +2,7 @@ import carPlaceholder from "../../assets/car-placeholder.png";
 import convertDateIST from "../../utils/convertDateToIST.js";
 
 const OrderItem = ({ order }) => {
-  const { price, carId, customerId, startDate, endDate } = order;
+  const { price, carId, customerId, startDate, endDate, order_id } = order;
   const { model, vehicleNumber, capacity, vehicleImage } = carId;
   const { firstName, lastName, email, phone, address } = customerId;
   return (
@@ -36,6 +36,7 @@ const OrderItem = ({ order }) => {
       <div className="flex flex-col my-8">
         <h2 className="text-xl font-semibold mb-3">Rent Details</h2>
         <div>
+          <h3>Order ID: {order_id}</h3>
           <h3>Start Date: {convertDateIST(startDate)}</h3>
           <h3>End Date: {convertDateIST(endDate)}</h3>
           <h3 className="font-semibold">Total Rent: ₹ {price}</h3>

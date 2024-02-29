@@ -15,6 +15,7 @@ const EditCar = () => {
   const [rent, setRent] = useState("");
   const [features, setFeatures] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
+  const [saveInProgress, setSaveInProgress] = useState(false);
   const { loading, getCar, car } = useGetCarDetails();
   const { id } = useParams();
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -49,6 +50,7 @@ const EditCar = () => {
     if (rent > 0) formData.append("rent", rent);
     if (selectedImage != null) formData.append("carImage", selectedImage);
     try {
+      setSaveInProgress(true);
       const response = await axios.post(
         import.meta.env.VITE_BACKEND_URL + "/agency/edit-car/" + id,
         formData,
@@ -62,6 +64,8 @@ const EditCar = () => {
       }
     } catch (error) {
       console.log(error.message);
+    } finally {
+      setSaveInProgress(false);
     }
     setModel("");
     setVehNumber("");
@@ -131,7 +135,10 @@ const EditCar = () => {
           <button
             onClick={editCarHandler}
             className="bg-success text-black py-2 rounded-md">
-            Save
+            {saveInProgress && (
+              <span className="loading loading-dots loading-sm"></span>
+            )}
+            {!saveInProgress && <span>Save</span>}
           </button>
         </div>
       )}

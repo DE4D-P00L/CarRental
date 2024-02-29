@@ -12,6 +12,8 @@ import AllCars from "./pages/AllCars";
 import AddCar from "./pages/AddCar";
 import Orders from "./pages/Orders";
 import EditCar from "./pages/EditCar";
+import PaymentVerification from "./pages/PaymentVerification";
+import NotFound from "./pages/NotFound";
 
 function App() {
   const [dark, setDark] = useState(localStorage.getItem("theme") === "true");
@@ -33,8 +35,13 @@ function App() {
           <Route path="/inventory" element={<Inventory />} />
           <Route path="/add-car" element={<AddCar />} />
           <Route path="/all-cars" element={<AllCars />} />
+          <Route
+            path="/payment-verification/:pid"
+            element={<PaymentVerification />}
+          />
           <Route path="/orders" element={<Orders />} />
           <Route path="/edit/:id" element={<EditCar />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>
     </div>
